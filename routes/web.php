@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormLogic;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[FormLogic::class,'welcome_form_view']);
+Route::post('/stud_data_fatch',[FormLogic::class,'welcome_form_data_inserted']);
+Route::get('/stud_data_display',[FormLogic::class,'welcome_form_data_display']);
