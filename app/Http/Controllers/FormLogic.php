@@ -32,17 +32,27 @@ class FormLogic extends Controller
     $insert_data->save();
 
     
-    return redirect()->back();
-    // echo "<script>alert('Your data is Submited Successful')</script>";
+    return redirect(url('stud_data_display'));
+
 }
 
 
 public function welcome_form_data_display(Request $request){
 
-    $display=FormData::all();
- 
-    echo "<pre>";
-    print_r($display->toarray());
-
+    $display_data=FormData::all();
+    $data = compact('display_data');
+    return view('display')->with($data);
+   
 }
+
+
+public function welcome_form_data_delete($id){
+
+    $delete_data=FormData::find($id);
+   $delete_data->delete();
+   return redirect(url('stud_data_display'));
+   
+}
+
+
 }
