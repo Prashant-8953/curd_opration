@@ -19,3 +19,6 @@ Route::post('/stud_data_fatch',[FormLogic::class,'welcome_form_data_inserted']);
 Route::get('/stud_data_display',[FormLogic::class,'welcome_form_data_display']);
 
 Route::get('/stud_data_delete/{id}',[FormLogic::class,'welcome_form_data_delete'])->name('delete_data');
+
+Route::get('/stud_data_edit/{id}',[FormLogic::class,'welcome_form_data_edit'])->name('edit_data');
+Route::post('/stud_data_update/{id}',[FormLogic::class,'welcome_form_data_update']);

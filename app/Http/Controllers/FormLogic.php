@@ -8,7 +8,11 @@ use App\Models\FormData;
 class FormLogic extends Controller
 {
     public function welcome_form_view(){
-        return view('welcome');
+
+        $url = url('/stud_data_fatch');
+        $title = "Registration Form";
+        $data=compact('url','title');
+        return view('welcome')->with($data);
     }
 
 
@@ -51,7 +55,41 @@ public function welcome_form_data_delete($id){
     $delete_data=FormData::find($id);
    $delete_data->delete();
    return redirect(url('stud_data_display'));
+      
+}
+
+
+public function welcome_form_data_edit($id){
+
+    $edit_data=FormData::find($id);
+    if(is_null($edit_data)){
+        // user not found
+        return redirect('display');
+    }
+  else{
+    //founded
+    $url = url('/stud_data_update').'/'.$id;
+    $title = 'Update Registration Form';
+    $available_data=compact('edit_data','url','title');
+    return view('welcome')->with($available_data);
+  }
+
+  
+}
+
+public function welcome_form_data_update(Request $req , $id){
    
+    $update_data_stud=FormData::find($id);
+
+    
+
+    $update_data_stud->student_name = $req['name'];
+    $update_data_stud->email = $req['email'];
+    // $update_data_stud->password = md5($req['password']);
+    $update_data_stud->DOB = $req['dob'];
+    $update_data_stud->save();
+
+    return redirect(url('stud_data_display'));
 }
 
 

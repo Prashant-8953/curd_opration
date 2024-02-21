@@ -28,17 +28,19 @@
     <div class="row">
         <div class="col-md-6">
             <div class="registration-container">
-                <h2 class="mb-4">Registration Form</h2>
-                <form action="{{url('/')}}/stud_data_fatch"  method="POST">
+                <h2 class="mb-4">{{$title}}</h2> 
+                <form action="{{$url}}"  method="POST">
                     @csrf
                     <!-- Your main Blade view -->
-                    <x-inputform type="text" name="name" label="Name" placeholder="Enter your first Name" value="{{ old('name') }}"/>
+                    <x-inputform type="text" name="name" label="Name" placeholder="Enter your first Name" value="{{ old('name', isset($edit_data) ? $edit_data->student_name : '') }}"/>
                     <span class="text-danger">
                         @error('name')
                             {{ $message }}
                         @enderror
                     </span>
-                    <x-inputform type="email" name="email" label="Email" placeholder="Enter your Email" value="{{ old('email') }}"/>
+                    <x-inputform type="email" name="email" label="Email" placeholder="Enter your Email"
+                    
+                     value="{{ old('email',isset($edit_data) ? $edit_data->email : '') }}"/>
                     <span class="text-danger">
                         @error('email')
                             {{ $message }}
@@ -51,7 +53,7 @@
                         @enderror
                     </span>
 
-                    <x-inputform type="date" name="dob" label="DOB" placeholder="Enter your DOB" value="{{ old('dob') }}"/>
+                    <x-inputform type="date" name="dob" label="DOB" placeholder="Enter your DOB" value="{{ old('dob',isset($edit_data) ? $edit_data->DOB : '') }}"/>
                     <span class="text-danger">
                         @error('dob')
                             {{ $message }}

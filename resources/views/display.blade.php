@@ -61,7 +61,7 @@
             
 
 
-            <a href="" class=""><button class="btn btn-success">Edit</button></a>
+            <a href="{{ route('edit_data', ['id' => $value['student_id']]) }}" class=""><button class="btn btn-success">Edit</button></a>
 
 
         </td>
