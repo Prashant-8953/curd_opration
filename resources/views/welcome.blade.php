@@ -29,7 +29,8 @@
         <div class="col-md-6">
             <div class="registration-container">
                 <h2 class="mb-4">{{$title}}</h2> 
-                <form action="{{$url}}"  method="POST">
+                {{-- $url jo  formlogic me banaya use yaha fatch kar ab url change kiya lekin data view karane ke liye dusra url bana aur waha bhi title registration form diya aur compact karake data ko fatch kiya. --}}
+                <form action="{{$url}}"  method="POST"> 
                     @csrf
                     <!-- Your main Blade view -->
                     <x-inputform type="text" name="name" label="Name" placeholder="Enter your first Name" value="{{ old('name', isset($edit_data) ? $edit_data->student_name : '') }}"/>

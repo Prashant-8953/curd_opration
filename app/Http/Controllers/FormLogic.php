@@ -8,7 +8,6 @@ use App\Models\FormData;
 class FormLogic extends Controller
 {
     public function welcome_form_view(){
-
         $url = url('/stud_data_fatch');
         $title = "Registration Form";
         $data=compact('url','title');
@@ -28,6 +27,9 @@ class FormLogic extends Controller
             ]
         );
 
+        // p($request->all()); // use helperfile and use this own creating funtion.
+        // die;
+
     $insert_data = new FormData;
     $insert_data->student_name = $request['name'];
     $insert_data->email = $request['email'];
@@ -44,8 +46,8 @@ class FormLogic extends Controller
 public function welcome_form_data_display(Request $request){
 
     $display_data=FormData::all();
-    $data = compact('display_data');
-    return view('display')->with($data);
+    $data = compact('display_data');// ye ek array function hai jo vriable ke data ko array ke rup me store karta hai
+    return view('display')->with($data);//with $data se hum  data ko display page per le jarahe hai.
    
 }
 
@@ -62,16 +64,23 @@ public function welcome_form_data_delete($id){
 public function welcome_form_data_edit($id){
 
     $edit_data=FormData::find($id);
+
     if(is_null($edit_data)){
         // user not found
         return redirect('display');
     }
   else{
     //founded
-    $url = url('/stud_data_update').'/'.$id;
-    $title = 'Update Registration Form';
-    $available_data=compact('edit_data','url','title');
+    $url = url('/stud_data_update').'/'.$id;//new url banake data aur id ko yaha laya.
+
+    $title = 'Update Registration Form';//hum jo registration page liya tha usi ke title ko change kiya.dynimicaly
+
+    $available_data=compact('edit_data','url','title');// ye tino variable ke data ko array me leke welcome page per aagaya.
+
     return view('welcome')->with($available_data);
+
+    
+
   }
 
   
@@ -80,7 +89,6 @@ public function welcome_form_data_edit($id){
 public function welcome_form_data_update(Request $req , $id){
    
     $update_data_stud=FormData::find($id);
-
     
 
     $update_data_stud->student_name = $req['name'];

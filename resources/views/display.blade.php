@@ -13,6 +13,7 @@
 
     .custom-table th, .custom-table td {
       border: 1px solid #dee2e6;
+
     }
 
     .custom-table thead th {
@@ -46,18 +47,20 @@
       </tr>
     </thead>
     <tbody>
+
+{{-- array se data ko nikalne/itration ke liye foreach me data vo pass kiya --}}
         @foreach ($display_data as $value)        
       <tr>
         <th scope="row">{{$value['student_id']}}</th>
         <td>{{$value['student_name']}}</td>
         <td>{{$value['email']}}</td>
-        <td>{{$value['DOB']}}</td>
+        <td>{{$value['DOB']}}</td> 
         <td>
 
             <a href="{{ route('delete_data', ['id' => $value['student_id']]) }}" class="">
                 <button class="btn btn-danger">Delete</button>
             </a>
-            
+             
             
 
 
