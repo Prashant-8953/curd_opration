@@ -5,10 +5,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FormData extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $table="_form_data_";
     protected $primaryKey="student_id";
 

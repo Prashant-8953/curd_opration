@@ -13,8 +13,9 @@ class FormLogic extends Controller
         $data=compact('url','title');
         return view('welcome')->with($data);
     }
-
-
+    
+    
+  
     public function welcome_form_data_inserted(Request $request){
 
 
@@ -49,6 +50,33 @@ public function welcome_form_data_display(Request $request){
     $data = compact('display_data');// ye ek array function hai jo vriable ke data ko array ke rup me store karta hai
     return view('display')->with($data);//with $data se hum  data ko display page per le jarahe hai.
    
+}
+
+public function trash_data_view(){
+        $display_data = FormData::onlyTrashed()->get();
+        $data = compact('display_data');
+        return view('move_trash')->with($data);
+
+    }
+
+
+
+
+
+public function trash_data_restore($id){
+
+    $delete_data=FormData::withTrashed()->find($id);
+   $delete_data->restore();
+   return redirect(url('stud_data_display'));
+      
+}
+
+public function force_data_del($id){
+
+    $delete_data=FormData::withTrashed()->find($id);
+   $delete_data->forceDelete();
+   return redirect(url('stud_data_display'));
+      
 }
 
 

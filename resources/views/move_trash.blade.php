@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Move Trash</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -27,14 +28,14 @@
 
     .btnanchar{
 
-        position: relative;
-        left:920px;
-    }
-    .trash{
+position: relative;
+left:920px;
+}
+.trash{
 
-        position: relative;
-        left:930px;
-    }
+position: relative;
+left:930px;
+}
   </style>
 </head>
 <body>
@@ -42,7 +43,8 @@
 <div class="container">
   <table class="table table-bordered custom-table">
     <a href="{{route('insert_data')}}" class="btnanchar"><button class="btn btn-success mt-5">Add</button></a>
-    <a href="{{route('trash_data_display')}}" class="trash"><button class="btn btn-danger mt-5 ml-2 ">Goto Trash</button></a>
+
+    <a href="{{route('view_data')}}" class="trash"><button class="btn btn-primary mt-5">View Diplay </button></a>
     <thead>
      <tr>
         <th scope="col">stud_id</th>
@@ -63,14 +65,14 @@
         <td>{{$value['DOB']}}</td> 
         <td>
 
-            <a href="{{ route('delete_data', ['id' => $value['student_id']]) }}" class="">
-                <button class="btn btn-danger">Move to Trash</button>
+            <a href="{{ route('force_data_del', ['id' => $value['student_id']]) }}" class="">
+                <button class="btn btn-danger">Permanently Delete</button>
             </a>
              
             
 
 
-            <a href="{{ route('edit_data', ['id' => $value['student_id']]) }}" class=""><button class="btn btn-success">Edit</button></a>
+            <a href="{{ route('trash_data_restore', ['id' => $value['student_id']]) }}" class=""><button class="btn btn-success">Restore</button></a>
 
 
         </td>

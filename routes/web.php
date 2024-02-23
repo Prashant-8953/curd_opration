@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 Route::get('/',[FormLogic::class,'welcome_form_view'])->name('insert_data');
 Route::post('/stud_data_fatch',[FormLogic::class,'welcome_form_data_inserted']);
 
-Route::get('/stud_data_display',[FormLogic::class,'welcome_form_data_display']);
+Route::get('/stud_data_display',[FormLogic::class,'welcome_form_data_display'])->name('view_data');
 
 Route::get('/stud_data_delete/{id}',[FormLogic::class,'welcome_form_data_delete'])->name('delete_data');
 
@@ -43,8 +43,6 @@ Route::get('set-session', function(Request $request ){
     return redirect(url('get-all-session'));
 
     // note - put ka data jab tak session destroy nahi hota tab rahta hai leki flash ka data kewal ek bar ke liye hi jata hai dusri bar jaha koi request hui vo hat jata hai.
-
-
 });
 
 
@@ -59,3 +57,9 @@ Route::get('destroy-session', function(Request $request ){
 });
 
 
+Route::get('/trash_data',[FormLogic::class,'trash_data_view'])->name('trash_data_display');
+
+
+Route::get('/stud_data_restore/{id}',[FormLogic::class,'trash_data_restore'])->name('trash_data_restore');
+
+Route::get('/force_data_del/{id}',[FormLogic::class,'force_data_del'])->name('force_data_del');
