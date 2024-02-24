@@ -38,6 +38,7 @@ class FormLogic extends Controller
     $insert_data->DOB = $request['dob'];
     $insert_data->save();
 
+
     
     return redirect(url('stud_data_display'));
 
@@ -46,10 +47,19 @@ class FormLogic extends Controller
 
 public function welcome_form_data_display(Request $request){
 
-    $display_data=FormData::all();
-    $data = compact('display_data');// ye ek array function hai jo vriable ke data ko array ke rup me store karta hai
-    return view('display')->with($data);//with $data se hum  data ko display page per le jarahe hai.
-   
+    $search = $request['search'] ?? "";
+    if($search != ""){
+
+        //where 
+        $display_data = FormData::where('student_name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
+
+    }
+    else{
+        $display_data=FormData::all();
+    }
+
+$data = compact('display_data','search');// ye ek array function hai jo vriable ke data ko array ke rup me store karta hai
+return view('display')->with($data);//with $data se hum  data ko display page per le jarahe hai.
 }
 
 public function trash_data_view(){
