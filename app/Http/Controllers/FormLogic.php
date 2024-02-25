@@ -51,9 +51,11 @@ public function welcome_form_data_display(Request $request){
     if($search != ""){
 
         //where 
+
         $display_data = FormData::where('student_name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
 
     }
+    
     else{
         $display_data=FormData::all();
     }

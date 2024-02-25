@@ -73,7 +73,7 @@
 
           <button class="search-button">Search</button>
         </form>
-        <a href="{{route('view_data')}}"><button type="btn" class="search-button ml-2 bg-primary">Reset</button></a>
+        <a href="{{route('view_data ')}}"><button type="btn" class="search-button ml-2 bg-primary">Reset</button></a>
           </div>
           <a href="{{route('insert_data')}}" class="btnanchar"><button class="btn btn-success mt-5">Add</button></a>
             <a href="{{route('trash_data_display')}}" class="trash"><button
@@ -85,11 +85,12 @@
                     <th scope="col">Email</th>
                     <th scope="col">DOB</th>
                     <th scope="col">Actions</th>
+
                 </tr>
             </thead>
             <tbody>
 
-                {{-- array se data ko nikalne/itration ke liye foreach me data vo pass kiya --}}
+                {{-- array se data ko nikalne/itration ke liye foreach data vo pass kiya --}}
                 @foreach ($display_data as $value)
                 <tr>
                     <th scope="row">{{$value['student_id']}}</th>

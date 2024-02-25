@@ -54,6 +54,7 @@ left:930px;
         <th scope="col">Actions</th>
       </tr>
     </thead>
+    
     <tbody>
 
 {{-- array se data ko nikalne/itration ke liye foreach me data vo pass kiya --}}

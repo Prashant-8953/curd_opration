@@ -24,6 +24,7 @@
 </head>
 <body>
 
+    
 <div class="container">
     <a href="{{route('view_data')}}" class="trash"><button class="btn btn-primary mt-5">Goto Home Page</button></a>
     <thead>
