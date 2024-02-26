@@ -59,6 +59,9 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        
+
     </style>
 </head>
 
@@ -73,7 +76,7 @@
 
           <button class="search-button">Search</button>
         </form>
-        <a href="{{route('view_data ')}}"><button type="btn" class="search-button ml-2 bg-primary">Reset</button></a>
+        <a href="{{route('view_data')}}"><button type="btn" class="search-button ml-2 bg-primary">Reset</button></a>
           </div>
           <a href="{{route('insert_data')}}" class="btnanchar"><button class="btn btn-success mt-5">Add</button></a>
             <a href="{{route('trash_data_display')}}" class="trash"><button
@@ -108,6 +111,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="row">
+            {{$display_data->links()}}
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

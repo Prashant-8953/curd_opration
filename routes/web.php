@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormLogic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,44 @@ Route::get('/trash_data',[FormLogic::class,'trash_data_view'])->name('trash_data
 Route::get('/stud_data_restore/{id}',[FormLogic::class,'trash_data_restore'])->name('trash_data_restore');
 
 Route::get('/force_data_del/{id}',[FormLogic::class,'force_data_del'])->name('force_data_del');
+
+
+
+// note - use group of routing ------------------------
+
+/*
+
+supose humne multiple routes banaye hai like -
+ /customer/view
+ /customer/create
+ /customer/delete
+ /customer/update 
+ /customer/edit ..... etc.
+
+
+ to insabhi me bychance kabhi route me change karna hua to sabhi jagah karna padega like mujhe customer ki jagah user karna hua to mujhe her bar sabme jake change karna hoga.ishi ko solve karne ke liye grouping route banaye jate hai.
+
+
+ syntex with example - 
+
+ Route::group(['prefix'->'/customer'],function(){
+    //by chance mujhe change karna hua customer ke jagah user karna hua to mai easly kar sakta hu.
+
+    Route::get('/insert',[FormLogic::class,'welcome_form_insert']);
+    Route::get('/delete',[FormLogic::class,'welcome_form_delete']);
+    Route::get('/update',[FormLogic::class,'welcome_form_update']);
+    Route::get('/edit',[FormLogic::class,'welcome_form_edit']);
+    Route::get('/view',[FormLogic::class,'welcome_form_view']);
+
+ });
+
+
+*/ 
+
+
+
+Route::get('/languages_practices/{lang?}',function($lang=null){
+
+    App::setlocale($lang);
+    return view('language_practice');
+});

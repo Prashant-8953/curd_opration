@@ -57,7 +57,7 @@ public function welcome_form_data_display(Request $request){
     }
     
     else{
-        $display_data=FormData::all();
+        $display_data=FormData::paginate(15);
     }
 
 $data = compact('display_data','search');// ye ek array function hai jo vriable ke data ko array ke rup me store karta hai
