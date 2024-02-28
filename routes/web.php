@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormLogic;
+use App\Http\Controllers\IndexController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -105,3 +106,6 @@ Route::get('/languages_practices/{lang?}',function($lang=null){
     App::setlocale($lang);
     return view('language_practice');
 });
+
+
+Route::get('/data',[IndexController::class,'index']);
