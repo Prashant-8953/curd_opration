@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name',255);
             $table->string('email');
             $table->string('contact',11);
-            $table->unsignedBigInteger('group_id_data');
-            $table->foreign('group_id_data')->references('group_id')->on('groups_');
+            $table->unsignedBigInteger('group_id');
+            $table->foreign('group_id')->references('group_id')->on('groups_');
             $table->timestamps();
         });
     }

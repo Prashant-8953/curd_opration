@@ -108,4 +108,16 @@ Route::get('/languages_practices/{lang?}',function($lang=null){
 });
 
 
-Route::get('/data',[IndexController::class,'index']);
+Route::get('/data',[IndexController::class,'index'])->middleware('groupgurdmiddleware');// ->middleware('gurd');
+Route::get('/group/data',[IndexController::class,'group'])->middleware('groupgurdmiddleware'); // ->middleware('gurd');
+
+Route::get('/login',function(){
+    session()->put('user_id',1);
+    return redirect('/');
+  
+});
+
+Route::get('/logout',function(){
+    session()->forget('user_id');
+    return redirect('/');
+});
