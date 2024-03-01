@@ -50,7 +50,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\AgeCheck::class,
             \App\Http\Middleware\LoggedIn::class,
 
-        ],
+        ], 
     ];
 
     /**
